@@ -16,14 +16,28 @@ export function setupMultipleCopy() {
             // Store the original clipboard function
             const originalWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);
 
-            // UI label for copied count
-            const copyCounter = document.createElement('div');
-            copyCounter.textContent = "Copied: 0";
-            
-            document.body.appendChild(copyCounter);
+            // Create container for floating controls
+            const mcContainer = document.createElement('div');
+            mcContainer.className = 'mc-floating-container';
 
+            // Create a single div for counter and latest text
+            const copyCounter = document.createElement('div');
+            copyCounter.className = 'mc-floating-counter';
+
+            // Helper to update both count and latest text
             const updateCounter = () => {
-                copyCounter.textContent = `Copied: ${copiedTexts.length}`;
+                const count = copiedTexts.length;
+                let latest = '—';
+                if (count > 0) {
+                    latest = copiedTexts[count - 1].split(':')[0].trim();
+                    if (latest.length > 16) {
+                        latest = latest.slice(0, 16) + '…';
+                    }
+                }
+                copyCounter.innerHTML = `
+                    <span class="mc-counter-count">Copied: ${count}</span>
+                    <span class="mc-counter-latest">${latest}</span>
+                `;
             };
 
             // Override writeText to intercept all clipboard copies
@@ -51,15 +65,13 @@ export function setupMultipleCopy() {
 
             // Create "Finish Recording" button
             const stopButton = document.createElement('button');
-            stopButton.textContent = "Finish Recording";
-
-            document.body.appendChild(stopButton);
+            stopButton.textContent = "Finish";
+            stopButton.className = 'mc-floating-btn mc-stop-btn';
 
             stopButton.addEventListener('click', async () => {
                 const finalText = copiedTexts.join('\n');
                 try {
                     await originalWriteText(finalText);
-                    alert("Merged copied text written to clipboard!");
                 } catch (e) {
                     alert("Failed to write final text to clipboard.");
                 }
@@ -67,26 +79,33 @@ export function setupMultipleCopy() {
                 // Cleanup
                 document.removeEventListener('copy', onCopy);
                 navigator.clipboard.writeText = originalWriteText;
-                stopButton.remove();
-                copyCounter.remove();
-                pauseButton.remove();
+                mcContainer.remove();
                 window.__multipleCopyActive = false;
             });
 
             // Create Pause/Resume button
             const pauseButton = document.createElement('button');
-            pauseButton.textContent = "Pause Recording";
-
-            document.body.appendChild(pauseButton);
+            pauseButton.textContent = "Pause";
+            pauseButton.className = 'mc-floating-btn mc-pause-btn';
 
             pauseButton.addEventListener('click', () => {
                 isPaused = !isPaused;
-                pauseButton.textContent = isPaused ? "Resume Recording" : "Pause Recording";
+                pauseButton.textContent = isPaused ? "Resume" : "Pause";
+                pauseButton.classList.toggle('paused', isPaused);
             });
 
-            copyCounter.className = 'mc-floating-counter';
-            stopButton.className = 'mc-floating-btn mc-stop-btn';
-            pauseButton.className = 'mc-floating-btn mc-pause-btn';
+            // Create a button group container for column layout
+            const btnGroup = document.createElement('div');
+            btnGroup.className = 'mc-btn-group';
+
+            // Append buttons to the group (pause on top, stop below)
+            btnGroup.appendChild(pauseButton);
+            btnGroup.appendChild(stopButton);
+
+            // Append all to container
+            mcContainer.appendChild(copyCounter);
+            mcContainer.appendChild(btnGroup);
+            document.body.appendChild(mcContainer);
         })();
     });
 }

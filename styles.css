@@ -88,7 +88,6 @@ h1 {
     white-space: pre-wrap;
     word-break: break-all;
     margin: 0;
-    box-shadow: 0 2px 8px rgba(56,189,248,0.07);
     display: flex;
     align-items: flex-start;
 }
@@ -100,13 +99,13 @@ button {
     padding: 10px 22px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1rem;
-    transition: background 0.2s, box-shadow 0.2s;
+    font-size: 1.2rem;
+    transition: background 0.2s;
     box-shadow: 0 1px 4px rgba(56,189,248,0.08);
 }
-button:hover, button:focus {
+button:hover {
     background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
-    box-shadow: 0 2px 8px rgba(56,189,248,0.15);
+    box-shadow: 0 2px 8px rgba(44, 134, 173, 0.5)
 }
 .tool p, .multiplecopy-desc {
     margin: 12px 0 0 0;
@@ -126,67 +125,93 @@ button:hover, button:focus {
     text-align: center;
     min-height: 44px;
     letter-spacing: 2px;
-    box-shadow: 0 1px 4px rgba(22,163,74,0.06);
     margin-top: 10px;
 }
 /* Floating Multiple Copy Tool Styles */
-.mc-floating-counter {
+.mc-floating-container {
     position: fixed;
-    top: 10px;
-    left: 140px;
+    right: 24px;
+    bottom: 24px;
     z-index: 9999;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.mc-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.mc-floating-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: #2563eb;
     color: #fff;
-    padding: 7px 16px;
+    height: 50px;
+    width: 140px;
     border-radius: 7px;
     font-size: 1rem;
     font-family: inherit;
     font-weight: 600;
-    box-shadow: 0 2px 12px rgba(37,99,235,0.10);
     pointer-events: none;
     user-select: none;
     letter-spacing: 1px;
-    border: 2px solid #38bdf8;
+}
+
+.mc-counter-count {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.mc-counter-latest {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #e0f2fe;
+    font-family: 'Fira Mono', 'Consolas', monospace;
 }
 
 .mc-floating-btn {
-    position: fixed;
-    z-index: 9999;
-    padding: 10px 20px;
+    width: 120px;
+    height: 50px;
     color: #fff;
-    border: none;
     border-radius: 7px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    box-shadow: 0 2px 12px rgba(37,99,235,0.10);
-    outline: none;
-    transition: background 0.2s, box-shadow 0.2s;
-    border: 2px solid #38bdf8;
+    border: 3px solid #38bdf8;
+    margin-left: 0;
 }
 
 .mc-stop-btn {
-    top: 10px;
-    left: 10px;
     background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
     border-color: #ef4444;
 }
-.mc-stop-btn:hover, .mc-stop-btn:focus {
+.mc-stop-btn:hover {
     background: linear-gradient(90deg, #b91c1c 0%, #ef4444 100%);
-    box-shadow: 0 4px 16px rgba(239,68,68,0.18);
 }
 
 .mc-pause-btn {
-    top: 56px;
-    left: 10px;
-    background: linear-gradient(90deg, #f59e42 0%, #fbbf24 100%);
+    background: linear-gradient(90deg, #fe9d34 0%, #f9cb56 100%);
     color: #1e293b;
     border-color: #fbbf24;
 }
-.mc-pause-btn:hover, .mc-pause-btn:focus {
-    background: linear-gradient(90deg, #b45309 0%, #f59e42 100%);
+.mc-pause-btn:hover {
+    background: linear-gradient(90deg, #d68c15 0%, #fe9d34 100%);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(251,191,36,0.18);
+}
+.mc-pause-btn.paused {
+    background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+    color: #fff;
+    border-color: #22c55e;
+}
+.mc-pause-btn.paused:hover {
+    background: linear-gradient(90deg, #1a9e4b 0%, #22c55e 100%);
+    color: #fff;
 }
 @media (max-width: 900px) {
     .proxy2ip-body {
