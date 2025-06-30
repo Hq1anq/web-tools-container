@@ -47,11 +47,11 @@ To run this project locally, follow these steps:
    cd web-tools-container
    ```
 
-3. Open `src/index.html` in your web browser to access the tools.
+3. Open `index.html` in your web browser to access the tools.
 
 ## Future Enhancements
 
-This project is designed to be extensible. Additional tools can be added in the `src/tools` directory, and the main interface can be updated in `src/index.html` to include new functionalities.
+This project is designed to be extensible. Additional tools can be added in the `tools` directory, and the main interface can be updated in `index.html` to include new functionalities.
 
 ## License
 

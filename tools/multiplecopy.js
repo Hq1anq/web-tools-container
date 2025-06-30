@@ -18,18 +18,8 @@ export function setupMultipleCopy() {
 
             // UI label for copied count
             const copyCounter = document.createElement('div');
-            Object.assign(copyCounter.style, {
-                position: 'fixed',
-                top: '10px',
-                left: '130px',
-                zIndex: 9999,
-                backgroundColor: '#333',
-                color: 'white',
-                padding: '6px 10px',
-                borderRadius: '4px',
-                fontSize: '13px'
-            });
             copyCounter.textContent = "Copied: 0";
+            
             document.body.appendChild(copyCounter);
 
             const updateCounter = () => {
@@ -62,19 +52,7 @@ export function setupMultipleCopy() {
             // Create "Finish Recording" button
             const stopButton = document.createElement('button');
             stopButton.textContent = "Finish Recording";
-            Object.assign(stopButton.style, {
-                position: 'fixed',
-                top: '10px',
-                left: '10px',
-                zIndex: 9999,
-                padding: '8px 12px',
-                backgroundColor: '#ff4d4d',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px'
-            });
+
             document.body.appendChild(stopButton);
 
             stopButton.addEventListener('click', async () => {
@@ -98,25 +76,17 @@ export function setupMultipleCopy() {
             // Create Pause/Resume button
             const pauseButton = document.createElement('button');
             pauseButton.textContent = "Pause Recording";
-            Object.assign(pauseButton.style, {
-                position: 'fixed',
-                top: '50px',
-                left: '10px',
-                zIndex: 9999,
-                padding: '8px 12px',
-                backgroundColor: '#ffa500',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px'
-            });
+
             document.body.appendChild(pauseButton);
 
             pauseButton.addEventListener('click', () => {
                 isPaused = !isPaused;
                 pauseButton.textContent = isPaused ? "Resume Recording" : "Pause Recording";
             });
+
+            copyCounter.className = 'mc-floating-counter';
+            stopButton.className = 'mc-floating-btn mc-stop-btn';
+            pauseButton.className = 'mc-floating-btn mc-pause-btn';
         })();
     });
 }
