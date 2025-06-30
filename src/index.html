@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tools Container</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Web Development Tools</h1>
+        <div class="tools-col">
+            <div class="tool" id="proxy2ip">
+                <div class="tool-header">
+                    <h2>Proxy to IP</h2>
+                    <button id="convertButton">Convert</button>
+                </div>
+                <div class="proxy2ip-body">
+                    <textarea id="proxyInput" placeholder="Enter proxy strings, one per line"></textarea>
+                    <pre id="proxyOutput" class="proxy2ip-output"></pre>
+                </div>
+            </div>
+            <div class="tool" id="countline">
+                <div class="tool-header">
+                    <h2>Count Lines in Clipboard</h2>
+                    <button id="countButton">Count Lines</button>
+                </div>
+                <div class="countline-body">
+                    <div id="lineCountOutput" class="countline-output"></div>
+                </div>
+            </div>
+            <div class="tool" id="multiplecopy">
+                <div class="tool-header">
+                    <h2>Multiple Copy</h2>
+                    <button id="startMultipleCopyButton">Start Multiple Copy</button>
+                </div>
+                <p class="multiplecopy-desc">
+                    Click "Start Multiple Copy" to begin recording all copied text (manual or programmatic).<br>
+                    Use the floating buttons to pause or finish and merge your copied items.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

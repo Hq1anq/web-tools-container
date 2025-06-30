@@ -1,0 +1,20 @@
+{
+  "name": "web-tools-container",
+  "version": "1.0.0",
+  "description": "A simple web development tool container for string operations.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "web",
+    "tools",
+    "string",
+    "development"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
