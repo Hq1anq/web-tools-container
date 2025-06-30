@@ -58,7 +58,7 @@ h1 {
 }
 #proxyInput {
     width: 100%;
-    min-height: 110px;
+    box-sizing: border-box;
     padding: 12px;
     border: 1.5px solid #cbd5e1;
     border-radius: 8px;
@@ -77,7 +77,7 @@ h1 {
 }
 .proxy2ip-output {
     width: 100%;
-    min-height: 110px;
+    box-sizing: border-box;
     background: #f0f9ff;
     border: 2px solid #38bdf8;
     color: #0369a1;
@@ -91,6 +91,7 @@ h1 {
     display: flex;
     align-items: flex-start;
 }
+
 button {
     background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
     color: #fff;
