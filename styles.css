@@ -52,11 +52,11 @@ h1 {
     margin-left: 18px;
     margin-top: 0;
 }
-.proxy2ip-body {
+.proxy2ip-body, .calculateCost-body {
     display: flex;
     gap: 18px;
 }
-#proxyInput {
+#proxyInput, #noteInput {
     width: 100%;
     box-sizing: border-box;
     padding: 12px;
@@ -70,12 +70,12 @@ h1 {
     resize: none;           /* Prevent manual resizing */
     overflow: hidden;       /* Hide scrollbars */
 }
-#proxyInput:focus {
+#proxyInput:focus, #noteInput:focus {
     border-color: #38bdf8;
     outline: none;
     background: #e0f2fe;
 }
-.proxy2ip-output {
+.proxy2ip-output, .note-output {
     width: 100%;
     box-sizing: border-box;
     background: #f0f9ff;
@@ -215,7 +215,7 @@ button:hover {
     color: #fff;
 }
 @media (max-width: 900px) {
-    .proxy2ip-body {
+    .proxy2ip-body, .calculateCost-body {
         flex-direction: column;
         gap: 10px;
     }
