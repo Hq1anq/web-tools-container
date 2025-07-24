@@ -21,11 +21,18 @@ export function multipleCopyCombine() {
         autoResize();
     });
     copyBtn.addEventListener('click', async function () {
-        // Auto copy output to clipboard
-        try {
-            await navigator.clipboard.writeText(textElem.value.trim());
-        } catch (e) {
-            // Optional: show error or ignore
-        }
+        navigator.clipboard.writeText(textElem.value.trim())
+            .then(() => {
+                copyBtn.innerHTML = 'Copied';
+                setTimeout(() => {
+                    copyBtn.innerHTML = 'Copy';
+                }, 2000);
+            })
+            .catch(err => {
+                copyBtn.innerHTML = 'Fail to copy';
+                setTimeout(() => {
+                    copyBtn.innerHTML = 'Copy';
+                }, 1000);
+            });
     });
 }

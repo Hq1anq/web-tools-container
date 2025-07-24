@@ -36,10 +36,18 @@ export function setupProxy2Ip() {
         outputElem.textContent = output;
 
         // Auto copy output to clipboard
-        try {
-            await navigator.clipboard.writeText(output);
-        } catch (e) {
-            // Optional: show error or ignore
-        }
+        navigator.clipboard.writeText(output)
+            .then(() => {
+                convertBtn.innerHTML = 'Copied';
+                setTimeout(() => {
+                    convertBtn.innerHTML = 'Convert';
+                }, 2000);
+            })
+            .catch(err => {
+                convertBtn.innerHTML = 'Fail to copy';
+                setTimeout(() => {
+                    convertBtn.innerHTML = 'Convert';
+                }, 1000);
+            });
     });
 }

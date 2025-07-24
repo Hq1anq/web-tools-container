@@ -31,11 +31,19 @@ export function calculateProxy() {
         outputElem.textContent = output;
 
         // Auto copy output to clipboard
-        try {
-            await navigator.clipboard.writeText(output);
-        } catch (e) {
-            // Optional: show error or ignore
-        }
+        navigator.clipboard.writeText(output)
+            .then(() => {
+                calcBtn.innerHTML = 'Copied';
+                setTimeout(() => {
+                    calcBtn.innerHTML = 'Calculate';
+                }, 2000);
+            })
+            .catch(err => {
+                calcBtn.innerHTML = 'Fail to copy';
+                setTimeout(() => {
+                    calcBtn.innerHTML = 'Calculate';
+                }, 1000);
+            });
     });
 }
 
