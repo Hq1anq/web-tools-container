@@ -50,7 +50,7 @@ export function calculateProxy() {
 
 function processProxyData(inputText) {
   const priceMap = {
-    1: 14, // nghìn đồng
+    1: inputText.includes("dat1") ? 15 : 14, // nghìn đồng
     2: 24,
     3: 45,
     4: 82,
